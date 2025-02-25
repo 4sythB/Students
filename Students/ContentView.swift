@@ -9,13 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     let students: [Student]
+    
     var body: some View {
         let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
         ScrollView {
-            LazyVGrid(columns: columns) {
-                ForEach(students, id: \.self) { student in
-                    StudentCell(student: student)
-                        .frame(width: 150, height: 150)
+            VStack {
+                Text("Students")
+                    .font(.largeTitle)
+                
+                LazyVGrid(columns: columns) {
+                    ForEach(students, id: \.self) { student in
+                        StudentCell(student: student)
+                            .frame(width: 150, height: 150)
+                    }
                 }
             }
         }
